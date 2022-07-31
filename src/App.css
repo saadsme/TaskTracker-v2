@@ -1,6 +1,24 @@
+
 .App {
   text-align: center;
-  
+  width: 85%;
+  max-width: 600px;
+  margin: auto;
+  overflow: auto;
+  min-height: 1vh;
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 50px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+html{
+  justify-content: center;
+  height: 100vh;
+  background: rgb(0,245,252);
+background: linear-gradient(270deg, rgba(0,245,252,1) 0%, rgba(251,56,255,1) 100%);
 }
 .title,h1{
   font-size: 50px;
@@ -8,31 +26,134 @@
 .enter-task{
   border-style: solid;
   border-width: 2px;
-  border-radius: 5px;
+  border-radius: 20px;
   width: 200px;
   height:20px;
- 
-  
+}
+.button1{
+  width: 10%;
+  height:36px;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 20px;
 }
 button{
-  height: 27px;
+ 
+  height: auto;
+  padding:7px;
+  margin:2px;
   border-style: solid;
   border-width: 2px;
   border-radius: 5px;
-  
 }
-.addtask{
- 
-  border-width: 2px;
-  border-radius: 5px;
+input.enter-task{
+  height:30px;
+  width: 300px;
+  font-size: 25px;
+  text-align: center;
+  border: 1px solid #bdc1c6;
+}
+form{
   align-items: center;
   justify-content: center;
-  padding:10px;
+  display:flex;
+  flex-direction: row;
   
-  margin-left: 250px;
-  margin-right:250px;
-  height: 50px;
+}
+.tick{
+  height:20px;
+  
+}
+.TaskName{
+  
+  padding:3px;
+  text-align: left;
+  
+  float: left;
+  
+}
+.twobuttons{
+  display:flex;
+  margin-left:auto;
+  height:auto;
+  
 }
 
+span{
+  padding-left: 200px;
+}
+.TaskBox{
+  background-color: white;
+  display:flex;
+  border: 1px solid #bdc1c6;
+  border-radius: 30px;
+  padding:10px;
+  margin: 10px;
+  height:auto
+}
+.Tasks{
+  
+  font-size: 25px;
+  
+}
 
-
+input[type=checkbox] {
+	 position: relative;
+	 width: 1.5em;
+	 height: 20px;
+	 color: #363839;
+	 border: 1px solid #bdc1c6;
+	 border-radius: 4px;
+	 appearance: none;
+	 outline: 0;
+	 cursor: pointer;
+	 transition: background-color 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
+   background-color: #06842c;
+}
+ input[type=checkbox]::before {
+	 position: absolute;
+	 display: block;
+	 top: 2px;
+	 left: 7px;
+	 width: 8px;
+	 height: 14px;
+	 border-style: solid;
+	 border-color: #fff;
+	 border-width: 0 2px 2px 0;
+	 transform: rotate(45deg);
+	 opacity: 0;
+   
+}
+ input[type=checkbox]:checked {
+	 color: #fff;
+	 border-color: #06842c;
+	 background-color: #06842c;
+}
+ input[type=checkbox]:checked::before {
+	 opacity: 1;
+   
+   
+}
+ input[type=checkbox]:checked ~ label::before {
+	 clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+   
+}
+ label {
+	 position: relative;
+	 cursor: pointer;
+	 
+	 
+	 
+	 user-select: none;
+}
+ label::before {
+    width: 400px;
+    height:auto;
+	 position: absolute;
+	 content: attr(data-content);
+	 color: #9c9e9f;
+	 clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
+	 text-decoration: line-through;
+	 text-decoration-color: #363839;
+	 transition: clip-path 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}

@@ -1,5 +1,6 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
+import{ FaTrash, FaEdit, FaCheck, FaPlus } from 'react-icons/fa'
 import './App.css';
 
 function App() {
@@ -59,29 +60,41 @@ const editTodo = (id) =>{
 
   return (
     <div className="App">
+      <header>
       <h1 className='Title'>Todo List App</h1>
-      <div className='addtask'>
-        <form onSubmit={handleSubmit}>
-        
-          <input className='enter-task' type="text" onChange={(e) => setTodo(e.target.value)} value={todo}/>
-          <button className='button' type="submit">Add Task</button>
-        </form>
-      </div>
-      {todos.map((todo) => 
-          <div key={todo.id}>
-            {todoEditing===todo.id ? (<input type="text" onChange={(e) => seteditingText(e.target.value)} value={editingText}></input>) : (<div>{todo.text}</div>)}
+      </header>
+      <body>
+        <div className='addtask'>
+          <form onSubmit={handleSubmit}>
+          
+            <input className='enter-task' type="text" onChange={(e) => setTodo(e.target.value)} value={todo}/>
+            
+            <button className='button1' type="submit"><FaPlus/></button>
+          </form>
+        </div>
+        <div className="Tasks">
+        {todos.map((todo) => 
+            <div key={todo.id} className="TaskBox" >
+              {todoEditing===todo.id ? (<input type="text" onChange={(e) => seteditingText(e.target.value)} value={editingText}></input>) 
+              : (
+                 <div className='TaskName'> 
+                    <input type="checkbox" id="todo" name="todo" value="todo" onChange={()=> toggleComplete(todo.id)}checked={todo.completed}>
+                      </input>
+                      
+                      <label for="todo" data-content={todo.text}>
+                        {todo.text}</label>
+                  </div>
+                 )}
               
-              
-              <button onClick={() => deleteTodo(todo.id)}>Delete task</button>
-              <input 
-                type="checkbox" 
-                onChange={()=> toggleComplete(todo.id)}
-                checked={todo.completed}
-                ></input>
-              {todoEditing===todo.id ? (<button onClick={() => editTodo(todo.id)}>Submit Todo</button>) : (<button onClick={() => settodoEditing(todo.id)}>Edit Todo</button>)}
-              
-              
-          </div>)}
+                <div className='twobuttons'> 
+                  <button onClick={() => deleteTodo(todo.id)}><FaTrash/></button>
+                  {todoEditing===todo.id ? (<button onClick={() => editTodo(todo.id)}><FaCheck/></button>) : (<button onClick={() => settodoEditing(todo.id)}><FaEdit/></button>)}
+                </div>
+                
+            </div>)}
+            </div>
+        </body>
+        <footer></footer>
     </div>
   );
 }
